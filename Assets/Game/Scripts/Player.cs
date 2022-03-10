@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Helpers;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoSingleton<Player>
 {
-    [SerializeField]
+    
 
+    [SerializeField]
     private float speed;
 
     [SerializeField]
     private float fireTime;
 
-    [SerializeField]
-    private GameObject missile;
-
+    private MissileController missileController;
 
     private void Start()
     {
+        missileController = GetComponent<MissileController>();
         StartCoroutine(Fire());    
+        
     }
     private void Update() 
     {
@@ -35,7 +37,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Fire()
     {
-        Instantiate(missile, transform.position,Quaternion.identity);
+        missileController.Fire();
         yield return new WaitForSeconds(fireTime);
         StartCoroutine(Fire());
     }

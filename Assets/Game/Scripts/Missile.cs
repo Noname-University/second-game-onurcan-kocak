@@ -7,14 +7,20 @@ public class Missile : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    private void Start() 
+    {   
+           
+    }
+
 
     private void Update() 
     {
-        transform.position += Vector3.forward * speed * Time.deltaTime;    
+        transform.position += Vector3.forward * speed * Time.deltaTime;   
 
-        if(Vector3.Distance(transform.position, Player.Instance.position) >130)
-        {
-            Destroy(gameObject);
-        }
+            if(Vector3.Distance(transform.position, Player.Instance.transform.position) > 130)
+            {
+                gameObject.SetActive(false);
+            }
+
     }
 }
