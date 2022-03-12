@@ -24,15 +24,18 @@ public class Enemy : MonoBehaviour, IKillable
 
     public void Kill()
     {
-        CollecTableCotnroller.Instance.SpawnCollectable(transform.position);
+        var random = Random.Range(0, 10);
+        if(random == 1)
+        {
+            CollecTableCotnroller.Instance.SpawnCollectable(transform.position);
+        }
         gameObject.SetActive(false);
     }
 
     public void TakeHit(float hit)
     {
-        Debug.Log("asd");
        health -= hit;
-       if(health < 0 )
+       if(health <= 0 )
        {
            Kill();
        }
