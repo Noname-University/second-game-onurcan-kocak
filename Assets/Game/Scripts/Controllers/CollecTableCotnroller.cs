@@ -24,7 +24,7 @@ public class CollecTableCotnroller : MonoSingleton<CollecTableCotnroller>
     public void SpawnCollectable(Vector3 position)
     {
         var index = Random.Range(0,collectableCount);
-        var collectable= collectables[index];
+        var collectable = collectables[index];
         collectable.Spawn(position);
     }
 
