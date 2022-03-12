@@ -17,10 +17,26 @@ public class Player : MonoSingleton<Player>
 
     private float boundY;
 
+
+    public float FireTime
+    {
+        get
+        {
+            return fireTime;
+        }
+        set
+        {
+            if(value > 0)
+            {
+                fireTime = value;
+            }
+        }
+    }
+
     private void Awake() 
     {
-        boundX = Camera.main.orthographicSize/2-5;
-        boundY = Camera.main.orthographicSize-7;
+        boundX = Camera.main.orthographicSize/2-7;
+        boundY = Camera.main.orthographicSize - 7;
         missileController = GetComponent<MissileController>();
     }
 
